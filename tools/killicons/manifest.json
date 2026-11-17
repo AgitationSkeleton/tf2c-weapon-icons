@@ -1,0 +1,683 @@
+{
+ "icons": [
+  {
+   "name": "tf2cc_merc_crowbar_v1",
+   "title": "Crowbar (Merc)",
+   "defindex": [
+    30100
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_crowbar_684d36b9.mdl",
+   "family": "melee",
+   "compare": "wrench",
+   "spec": {
+    "max_w": 66.0,
+    "flip_u": true
+   },
+   "round2_note": "was upside down: flipped; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "flipped diagonally: ends swapped along the up-right melee axis, hook end now up-right (business end, impact star there), 28 deg melee angle kept",
+   "round4_note": "mirrored across the shaft axis: the gooseneck hook at the top-right now bends over and hangs down (concave-down), impact star on it; 28 deg melee angle kept"
+  },
+  {
+   "name": "tf2cc_merc_leadpipe_v1",
+   "title": "Lead Pipe (Merc)",
+   "defindex": [
+    30101
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_leadpipe_merc.mdl",
+   "family": "melee",
+   "compare": "club",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_knife_v1",
+   "title": "Knife (Merc)",
+   "defindex": [
+    30102
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_classic_knife.mdl",
+   "family": "melee",
+   "compare": "knife",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_chainsaw_v1",
+   "title": "Chainsaw (Merc)",
+   "defindex": [
+    30104
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_chainsaw_dm.mdl",
+   "family": "melee",
+   "compare": "bonesaw",
+   "spec": {
+    "roll": 10,
+    "view": "x",
+    "flip_f": true
+   },
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "side effect of the floating-piece fix: restores the handle/grip pieces that round 2 wrongly dropped (real model parts); otherwise unchanged"
+  },
+  {
+   "name": "tf2cc_merc_pistol_v1",
+   "title": "Pistol (Merc)",
+   "defindex": [
+    30105
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_pistol_mercenary.mdl",
+   "family": "gun",
+   "compare": "pistol",
+   "spec": {},
+   "round2_note": "muzzle flash was too low and big: now sized to the pistol and anchored on the barrel tip; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_akimbo_v1",
+   "title": "Akimbo Pistols (Merc)",
+   "defindex": [
+    30106
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_pistol_mercenary.mdl",
+   "family": "gun",
+   "compare": "pistol",
+   "spec": {
+    "dual": [
+     -9,
+     5
+    ]
+   },
+   "round2_note": "no pixels outside the canvas (was wrapping to the bottom); back pistol offset 9 left / 5 up behind a 1.4-unit gap; muzzle on the front barrel; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_revolver_v1",
+   "title": "Revolver (Merc)",
+   "defindex": [
+    30107
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_revolver_dm.mdl",
+   "family": "gun",
+   "compare": "revolver",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "side effect of the floating-piece fix: restores the hammer that round 2 wrongly dropped (real model parts); otherwise unchanged"
+  },
+  {
+   "name": "tf2cc_merc_tommygun_v1",
+   "title": "Tommy Gun (Merc)",
+   "defindex": [
+    30110
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_tommygun.mdl",
+   "family": "gun",
+   "compare": "smg",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_dynamite_v1",
+   "title": "Dynamite (Merc)",
+   "defindex": [
+    30111
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_dynamite.mdl",
+   "family": "thrown",
+   "compare": "tf_projectile_pipe",
+   "spec": {
+    "drop_bodyparts": [
+     1
+    ],
+    "flip_f": true,
+    "fx_size": 7.0,
+    "fx_dx": 0.0,
+    "fx_dy": 0.0,
+    "fx_exact": true,
+    "fx_fan": [
+     -170,
+     170
+    ]
+   },
+   "round2_note": "was mirrored: fuse now on the right, small spark centred on the fuse tip; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_supershotgun_v1",
+   "title": "Super Shotgun (Merc)",
+   "defindex": [
+    30112
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_supershotgun.mdl",
+   "family": "gun",
+   "compare": "doubleshotgun",
+   "spec": {},
+   "round2_note": "was squished: true proportions; muzzle on the barrel tip; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_assaultrifle_v1",
+   "title": "Assault Rifle (Merc)",
+   "defindex": [
+    30113
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_assault_rifle.mdl",
+   "family": "gun",
+   "compare": "smg",
+   "spec": {
+    "muzzle_dx": 0.0,
+    "muzzle_center": true,
+    "hole_fill": 6.0
+   },
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round4_note": "carry handle joined to the receiver (its window is filled, leaving one slot line, instead of a thin detached frame); stock, magazine and pistol grip separated by clean gap cuts; flash now touches the barrel tip on the barrel axis"
+  },
+  {
+   "name": "tf2cc_merc_rocketlauncher_v1",
+   "title": "Rocket Launcher (Merc)",
+   "defindex": [
+    30114
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_rocketlauncher_dm.mdl",
+   "family": "gun",
+   "compare": "rpg",
+   "spec": {},
+   "round2_note": "was squished with a floating piece at the back: true proportions, floating piece removed, muzzle on the tube end; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_chinalake_v1",
+   "title": "Grenade Launcher (Merc)",
+   "defindex": [
+    30115
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_grenadelauncher_dm.mdl",
+   "family": "gun",
+   "compare": "cyclops",
+   "spec": {
+    "axis": "pca",
+    "flip_u": true
+   },
+   "round2_note": "was upside down: flipped; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_gatling_v1",
+   "title": "Gatling Gun (Merc)",
+   "defindex": [
+    30117
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_minigun_dm_2ebc9716.mdl",
+   "family": "gun",
+   "compare": "minigun",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_railgun_v1",
+   "title": "Railgun (Merc)",
+   "defindex": [
+    30118
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_railgun.mdl",
+   "family": "gun",
+   "compare": "sniperrifle",
+   "spec": {
+    "flip_u": true,
+    "max_cuts": 5
+   },
+   "round2_note": "was upside down and noisy: flipped, true proportions, fewer cuts (5); rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_lightning_v1",
+   "title": "Lightning Gun (Merc)",
+   "defindex": [
+    30119
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_lightning_gun.mdl",
+   "family": "beam",
+   "compare": "taser",
+   "spec": {
+    "view": "wide"
+   },
+   "round2_note": "zap now a literal-colour layer exactly like the stock taser (.cls{fill:#00e1ff}), starting at the coil/emitter tip; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "full handle restored (the floating-piece filter now judges the uncut silhouette, so cut-apart parts are never dropped)"
+  },
+  {
+   "name": "tf2cc_merc_gib_v1",
+   "title": "BFG / Gib (Merc)",
+   "defindex": [
+    30120
+   ],
+   "model": "models/tf2cc/of/weapons/w_models/w_bfg.mdl",
+   "family": "gun",
+   "compare": "coilgun",
+   "spec": {
+    "view": "wide",
+    "max_cuts": 5
+   },
+   "round2_note": "was a top-down view: now the true side profile, fewer cuts (5); rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_machinegun_v1",
+   "title": "Machine Gun (MarxVee)",
+   "defindex": [
+    30150
+   ],
+   "model": "models/tf2cc/marxvee/weapons/customclasses/w_models/w_machinegun_merc.mdl",
+   "family": "gun",
+   "compare": "minigun",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_medkit_v1",
+   "title": "Medkit (MarxVee)",
+   "defindex": [
+    30151
+   ],
+   "model": "models/tf2cc/marxvee/weapons/customclasses/w_models/w_classic_medkit.mdl",
+   "family": "thrown",
+   "compare": "syringegun_medic",
+   "spec": {
+    "emblem": "cross",
+    "fx": "none",
+    "panel": 2.0
+   },
+   "round2_note": "more definition: solid cross with a gap outline and a panel-edge gap line; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_crowbar_4rdm_v1",
+   "title": "Crowbar (old Merc)",
+   "defindex": [
+    30202
+   ],
+   "model": "models/tf2cc/oldmerc/w_crowbar_4rdm.mdl",
+   "family": "melee",
+   "compare": "wrench",
+   "spec": {
+    "max_w": 66.0,
+    "flip_u": true
+   },
+   "round2_note": "was upside down: flipped; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "flipped diagonally: ends swapped along the up-right melee axis, hook end now up-right (business end, impact star there), 28 deg melee angle kept",
+   "round4_note": "mirrored across the shaft axis: the gooseneck hook at the top-right now bends over and hangs down (concave-down), impact star on it; 28 deg melee angle kept"
+  },
+  {
+   "name": "tf2cc_merc_supershotgun_b4_v1",
+   "title": "Super Shotgun (beta 4)",
+   "defindex": [
+    30203,
+    30223
+   ],
+   "model": "models/tf2cc/oldclass/w_supershotgun_beta4.mdl",
+   "family": "gun",
+   "compare": "doubleshotgun",
+   "spec": {},
+   "round2_note": "was squished: true proportions; muzzle on the barrel tip; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_chainsaw_b4_v1",
+   "title": "Chainsaw (beta 4)",
+   "defindex": [
+    30204
+   ],
+   "model": "models/tf2cc/oldmerc/w_chainsaw_b4.mdl",
+   "family": "melee",
+   "compare": "bonesaw",
+   "spec": {
+    "roll": 10,
+    "flip_f": true
+   },
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "side effect of the floating-piece fix: restores a small body piece that round 2 wrongly dropped (real model parts); otherwise unchanged"
+  },
+  {
+   "name": "tf2cc_merc_tommygun_b4_v1",
+   "title": "Tommy Gun (beta 4)",
+   "defindex": [
+    30205
+   ],
+   "model": "models/tf2cc/oldmerc/w_tommygun_b4.mdl",
+   "family": "gun",
+   "compare": "smg",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_leadpipe_4rdm_v1",
+   "title": "Lead Pipe (old Merc)",
+   "defindex": [
+    30206
+   ],
+   "model": "models/tf2cc/oldmerc/w_leadpipe_4rdm.mdl",
+   "family": "melee",
+   "compare": "club",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_sixshooter_v1",
+   "title": "Six-Shooter (beta 4)",
+   "defindex": [
+    30210
+   ],
+   "model": "models/tf2cc/oldmerc/w_snubnose_b4.mdl",
+   "family": "gun",
+   "compare": "revolver",
+   "spec": {
+    "max_cuts": 3,
+    "crease": 85.0,
+    "muzzle_center": true
+   },
+   "round2_note": "was squished: true proportions (barrel no longer flattened), fewer cuts so the barrel reads cleanly; muzzle on the barrel tip; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "muzzle flash moved up onto the barrel axis at the barrel tip"
+  },
+  {
+   "name": "tf2cc_merc_frag_v1",
+   "title": "Frag Grenade (beta 4)",
+   "defindex": [
+    30211
+   ],
+   "model": "models/tf2cc/oldmerc/w_frag_b4.mdl",
+   "family": "thrown",
+   "compare": "mirv_bomb",
+   "spec": {
+    "roll": 90,
+    "max_h": 20.0,
+    "flip_f": true
+   },
+   "round2_note": "was sideways and too big: stood upright, scaled to 20 units tall (stock grenade-icon size); rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "flipped vertically (was upside down)"
+  },
+  {
+   "name": "tf2cc_merc_heavyartillery_v1",
+   "title": "Heavy Artillery (beta 2)",
+   "defindex": [
+    30212
+   ],
+   "model": "models/tf2cc/oldmerc/w_heavyartillery_b2.mdl",
+   "family": "gun",
+   "compare": "minigun",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "side effect of the floating-piece fix: restores small receiver pieces that round 2 wrongly dropped (real model parts); otherwise unchanged"
+  },
+  {
+   "name": "tf2cc_merc_stengun_v1",
+   "title": "Sten Gun",
+   "defindex": [
+    30213,
+    30302,
+    30303
+   ],
+   "model": "models/tf2cc/oldmerc/w_stengun_4rdm.mdl",
+   "family": "gun",
+   "compare": "smg",
+   "spec": {
+    "view": "wide"
+   },
+   "round2_note": "was a top-down view: now the true side profile; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_merc_coffeepot_v1",
+   "title": "Coffee Pot (old Merc)",
+   "defindex": [
+    30226
+   ],
+   "model": "models/tf2cc/oldmerc/w_coffeepot_4rdm.mdl",
+   "family": "melee",
+   "compare": "bottle",
+   "spec": {
+    "flip_u": true,
+    "roll": -62.0
+   },
+   "round2_note": "was upside down: flipped; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "rotated about 90 deg clockwise so it stands upright"
+  },
+  {
+   "name": "tf2cc_oldclass_rescueranger_v1",
+   "title": "Rescue Ranger (old)",
+   "defindex": [
+    30300
+   ],
+   "model": "models/tf2cc/oldclass/w_rescueranger.mdl",
+   "family": "gun",
+   "compare": "shotgun",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_oldclass_poacherspride_v1",
+   "title": "Poacher's Pride (beta 4)",
+   "defindex": [
+    30301
+   ],
+   "model": "models/tf2cc/oldclass/w_poacherspride_b4.mdl",
+   "family": "gun",
+   "compare": "hunterrifle",
+   "spec": {},
+   "round2_note": "muzzle now on the barrel tip; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_oldclass_smg_b4_v1",
+   "title": "Scout's SMG (beta 4)",
+   "defindex": [
+    30305
+   ],
+   "model": "models/tf2cc/oldclass/w_smg_b4.mdl",
+   "family": "gun",
+   "compare": "smg",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  },
+  {
+   "name": "tf2cc_oldclass_cyclops_b4_v1",
+   "title": "Cyclops (beta 4)",
+   "defindex": [
+    30306
+   ],
+   "model": "models/tf2cc/oldclass/w_cyclops_b4.mdl",
+   "family": "gun",
+   "compare": "cyclops",
+   "spec": {
+    "axis": "pca",
+    "flip_u": true
+   },
+   "round2_note": "was upside down: flipped; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "side effect of the floating-piece fix: restores the trigger guard that round 2 wrongly dropped (real model parts); otherwise unchanged"
+  },
+  {
+   "name": "tf2cc_oldclass_rpg_b4_v1",
+   "title": "R.P.G. (beta 4)",
+   "defindex": [
+    30307
+   ],
+   "model": "models/tf2cc/oldclass/w_rpg_b4.mdl",
+   "family": "gun",
+   "compare": "rpg",
+   "spec": {
+    "max_gap": 99.0
+   },
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip (its separate warhead is a real part, kept)"
+  },
+  {
+   "name": "tf2cc_oldclass_makeshiftmutilator_v1",
+   "title": "Makeshift Mutilator",
+   "defindex": [
+    30310
+   ],
+   "model": "models/tf2cc/oldclass/w_makeshiftmutilator.mdl",
+   "family": "flame",
+   "compare": "flamethrower",
+   "spec": {},
+   "round2_note": "flame now a literal-colour layer exactly like the stock flamethrower (.cls{fill:#e17800}), starting at the nozzle; rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed",
+   "round3_note": "middle-right section restored (same floating-piece filter fix)"
+  },
+  {
+   "name": "tf2cc_af_flyswatter_v1",
+   "title": "Flyswatter (April Fools)",
+   "defindex": [
+    17502
+   ],
+   "model": "models/weapons/w_models/w_fly_swatter.mdl",
+   "family": "melee",
+   "compare": "fishwhacker",
+   "spec": {},
+   "round2_note": "rebuilt with true proportions (no X/Y stretch), muzzle effect snapped to the barrel tip, floating fragments removed"
+  }
+ ],
+ "skipped": [
+  {
+   "defindex": [
+    30103
+   ],
+   "why": "Fists: no weapon model (v_berserk_merc is a 3-vertex stub; the hands are c_merc_arms). Keeps inheriting stock 'fists'."
+  },
+  {
+   "defindex": [
+    30200
+   ],
+   "why": "Old Merc pistol: world model is stock w_pistol and v_pistol_4rdm has the same geometry; inherits stock 'pistol'."
+  },
+  {
+   "defindex": [
+    30201
+   ],
+   "why": "Old Merc shotgun: stock w_shotgun world model, v_shotgun_4rdm = stock engineer shotgun mesh; inherits 'shotgun'."
+  },
+  {
+   "defindex": [
+    30220
+   ],
+   "why": "Old Merc flare gun: stock w_flaregun world model; inherits 'flaregun'."
+  },
+  {
+   "defindex": [
+    17503,
+    17504,
+    17505,
+    17506,
+    17507,
+    17508
+   ],
+   "why": "Mine Layer 1-6: stock TF2C minelayer model, already 'proxymine'."
+  },
+  {
+   "defindex": [
+    17509
+   ],
+   "why": "AF Medic Shotgun: stock shotgun meshes (v_shotgun_medic = engineer shotgun mesh, w_shotgun stock)."
+  },
+  {
+   "defindex": [
+    17514
+   ],
+   "why": "Hare Trigger: stock shotgun models."
+  },
+  {
+   "defindex": [
+    17500,
+    17511
+   ],
+   "why": "Little Boy / Fat Man: tf_wearable, no weapon model, never the killing weapon."
+  },
+  {
+   "defindex": [
+    30099
+   ],
+   "why": "tf2cc_merc_body: body wearable, not a weapon."
+  }
+ ],
+ "customslop": "CustomSlop daily weapons get no icons of their own (user, 2026-11-16): each keeps its donor item's item_iconname (stock name or tf2cc_<item>_vN). After any tf2cc item_iconname change, refresh CustomSlop's donor roster cache (cache/donor_audit.json / model roster) so new CustomSlop weapons copy the current names; the SVGs reach clients through tf2cc's downloads list.",
+ "stock_names": [
+  {
+   "defindex": [
+    30108
+   ],
+   "title": "Shotgun (Merc)",
+   "item_iconname": "shotgun",
+   "why": "user round 2: same model as stock"
+  },
+  {
+   "defindex": [
+    30109
+   ],
+   "title": "SMG (Merc)",
+   "item_iconname": "smg",
+   "why": "user round 2: reuse the stock SMG"
+  },
+  {
+   "defindex": [
+    30116
+   ],
+   "title": "Nailgun (Merc)",
+   "item_iconname": "nailgun",
+   "why": "user round 2: same shape as the stock nailgun"
+  },
+  {
+   "defindex": [
+    30207
+   ],
+   "title": "Hammer Fists (beta 4)",
+   "item_iconname": "fists",
+   "why": "user round 2: reuse the stock fists"
+  },
+  {
+   "defindex": [
+    30304
+   ],
+   "title": "Medic's Shotgun (beta 4)",
+   "item_iconname": "shotgun",
+   "why": "user round 2: same model as stock"
+  },
+  {
+   "defindex": [
+    30309
+   ],
+   "title": "Uberspritze / Ubersaw (beta 4)",
+   "item_iconname": "ubersaw",
+   "why": "user round 2: stock Uberspritze (item 33) uses \"ubersaw\"; 30309 already has it"
+  },
+  {
+   "defindex": [
+    30208
+   ],
+   "title": "Nailgun (beta 4)",
+   "item_iconname": "nailgun",
+   "why": "user round 3: use the stock nailgun, not a custom one",
+   "round3": true
+  }
+ ],
+ "no_icon": [
+  {
+   "defindex": [
+    30308
+   ],
+   "title": "Overhealer",
+   "why": "user round 2: it's a Medi Gun (no kills); no item_iconname change"
+  },
+  {
+   "defindex": [
+    17501,
+    30240
+   ],
+   "title": "Holy Bible (April Fools)",
+   "why": "user round 2: can't kill; no item_iconname change"
+  },
+  {
+   "defindex": [
+    17510
+   ],
+   "title": "The Hot Wings (April Fools)",
+   "why": "user round 2: can't kill; no item_iconname change"
+  },
+  {
+   "defindex": [
+    17512,
+    30241
+   ],
+   "title": "Jarate (April Fools)",
+   "why": "user round 2: can't kill; no item_iconname change"
+  },
+  {
+   "defindex": [
+    17513
+   ],
+   "title": "Rejuvenator 2 (April Fools, stock nader model, no stock icon)",
+   "why": "user round 2: can't kill; no item_iconname change"
+  }
+ ]
+}
