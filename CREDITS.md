@@ -6,9 +6,17 @@ modelled by other people, credited below. The icons are derived from their model
 ## Open Fortress Team
 
 Models used for the Merc kill icons: Crowbar, Lead Pipe, Knife, Chainsaw, Pistol, Akimbo Pistols,
-Revolver, Tommy Gun, Dynamite, Super Shotgun, Assault Rifle, Rocket Launcher, Grenade Launcher,
-Gatling Gun, Railgun, Lightning Gun and BFG. The Chainsaw (Classic) bucket icon is posed like
-Open Fortress's chainsaw icon.
+Revolver, Tommy Gun, Dynamite, Super Shotgun, Assault Rifle, Rocket Launcher, Gatling Gun, Railgun,
+Lightning Gun and BFG. The Chainsaw (Classic) bucket icon is posed like Open Fortress's chainsaw
+icon.
+
+**Open Fortress's kill-icon art.** Five kill icons trace Open Fortress's own kill-feed icons
+(`d_images_of`), vectorised into the TF2 Classified style by `tools/killicons/ofref.py`: the
+Grenade Launcher (`tf2cc_merc_chinalake_v2`), Quad Launcher, Bouncer, Eternal Shotgun and Saw
+Ballista. The Lead Pipe, Knife and Chainsaw `_v2` icons are posed after Open Fortress's icons for
+those weapons, and the BFG's burst takes the colour of Open Fortress's. Every Open
+Fortress-derived icon was checked against Open Fortress's icon for the same weapon. Open
+Fortress's sprites themselves are not included in this repository.
 
 | Role | Credit |
 |---|---|

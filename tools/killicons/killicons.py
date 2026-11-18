@@ -64,8 +64,15 @@ def load_manifest():
 
 def build_icon(entry, out_svg, fs=None, cache=None, debug_dir=None):
     """Render one icon. `entry`: dict(name, model, family, spec{}). Returns a metrics dict.
-    """
+    With entry["of_icon"] the icon is OF's own kill-feed sprite vectorised (ofref.vectorise)."""
     t0 = time.time()
+    if entry.get("of_icon"):
+        import ofref
+        w, body_loops, layers = ofref.vectorise(entry["of_icon"], PX, **entry.get("of_spec", {}))
+        nbytes = KT.write_svg(out_svg, w, body_loops, layers)
+        met = measure(out_svg)
+        met.update(bytes=nbytes, cuts=[], seconds=round(time.time() - t0, 1), source="OF sprite " + entry["of_icon"])
+        return met
     fs = fs or KM.FS()
     cache = cache or os.path.join(iconcfg.out_dir(), "killicons", "_work", "models")
     spec = entry.get("spec", {})
@@ -170,7 +177,7 @@ def build_icon(entry, out_svg, fs=None, cache=None, debug_dir=None):
         if fam == "gun":
             size = spec.get("fx_size", 10.0 if body_w < 70 else 13.0)
             P = KT.muzzle_burst(name, mx, my, size, top_room=my - 0.2, bot_room=ICON_H - my - 0.2)
-            eff.append(([KT.orient(P, pos)], "half"))
+            eff.append(([KT.orient(P, pos)], spec.get("fx_color", "half")))
             width = max(width, P[:, 0].max() + 1.0)
         elif fam == "flame":
             L = spec.get("fx_size", 22.0)
@@ -326,6 +333,19 @@ def notice(svg, scale, look, badge=None):
     return base.convert("RGB")
 
 
+def of_preview(name, h=96):
+    """OF's own d_ sprite on the normal kill-feed background, scaled to the 3x preview height."""
+    import ofref
+    sp = Image.fromarray(ofref.crop(name), "RGBA")
+    bg = Image.new("RGBA", sp.size, NORMAL["bg"][:3] + (255,))
+    bg.alpha_composite(sp)
+    im = bg.convert("RGB").resize((max(1, round(sp.width * h / sp.height)), h), Image.LANCZOS)
+    pad = 12
+    out = Image.new("RGB", (im.width + 2 * pad, h + 2 * pad), NORMAL["bg"][:3])
+    out.paste(im, (pad, pad))
+    return out
+
+
 def review(out, results, stock_dir=None):
     sv = os.path.join(out, "svg")
     pv = os.path.join(out, "png")
@@ -343,6 +363,16 @@ def review(out, results, stock_dir=None):
             fp = os.path.join(pv, "%s_%s.png" % (n, tag))
             notice(svg, sc, look, badge).save(fp)
             files[tag] = "png/%s_%s.png" % (n, tag)
+        if r.get("of_ref"):
+            fp = os.path.join(pv, "of_%s.png" % r["of_ref"])
+            if not os.path.exists(fp):
+                of_preview(r["of_ref"]).save(fp)
+            files["of"] = "png/of_%s.png" % r["of_ref"]
+        if r.get("prev") and os.path.exists(os.path.join(sv, r["prev"] + ".svg")):
+            fp = os.path.join(pv, "%s_normal.png" % r["prev"])
+            if not os.path.exists(fp):
+                notice(os.path.join(sv, r["prev"] + ".svg"), 3, NORMAL).save(fp)
+            files["prev"] = "png/%s_normal.png" % r["prev"]
         cmp_ = r.get("compare")
         if cmp_ and os.path.exists(os.path.join(stock_dir, cmp_ + ".svg")):
             fp = os.path.join(pv, "stock_%s_normal.png" % cmp_)
@@ -361,7 +391,8 @@ def write_plan(out, results):
     man = load_manifest()
     lines = ["# kill-icon integration plan (generated; nothing applied)", "",
              "## schema: item_iconname per defindex (tf2cc gen_schema / AF pack merge)"]
-    for r in results:
+    ship = [r for r in results if not (r.get("choice") or "").startswith("B")]
+    for r in ship:
         for d in r["defindex"]:
             lines.append('%s\t"item_iconname"\t"%s"' % (d, r["name"]))
     lines += ["", "## schema: switch to a stock icon name (no custom file)"]
@@ -371,7 +402,11 @@ def write_plan(out, results):
     lines += ["", "## no kill icon (no item_iconname change)"]
     lines += ["%s: %s (%s)" % (",".join(map(str, s_["defindex"])), s_["title"], s_["why"]) for s_ in man.get("no_icon", [])]
     lines += ["", "## downloads.txt (configs/tf2cc_tf2c/downloads.txt) and FastDL paths"]
-    lines += ["resource/svgs/deathnotice/%s.svg" % r["name"] for r in results]
+    lines += ["resource/svgs/deathnotice/%s.svg" % r["name"] for r in ship]
+    lines += ["", "## superseded in round 5 (keep the old files on FastDL and in downloads.txt: players cache them)"]
+    lines += ["%s -> %s" % (x["old"], x["new"]) for x in man.get("superseded", [])]
+    lines += ["", "## user's choice pending (not shipped unless picked)"]
+    lines += ["%s: %s" % (r["name"], r["choice"]) for r in results if (r.get("choice") or "").startswith("B")]
     lines += ["", "## skipped"] + ["%s: %s" % (",".join(map(str, s["defindex"])), s["why"]) for s in man["skipped"]]
     lines += ["", "## CustomSlop", man.get("customslop", "")]
     with open(os.path.join(out, "integration_plan.txt"), "w", encoding="utf-8") as f:
@@ -431,6 +466,8 @@ img{max-width:100%;height:auto;image-rendering:auto;display:block}
 details{margin-top:6px;color:var(--mut);font-size:12px}
 .r2{background:#e0a030;color:#1b1a19;border-radius:4px;padding:0 6px;font-size:12px;font-weight:600}
 .chg{margin:6px 0 0;font-size:13px}
+.r5{background:#c77dd8;color:#1b1a19;border-radius:4px;padding:0 6px;font-size:12px;font-weight:600}
+.ch{background:#e05050;color:#fff;border-radius:4px;padding:0 6px;font-size:12px;font-weight:600}
 .r4{background:#6aa9e0;color:#1b1a19;border-radius:4px;padding:0 6px;font-size:12px;font-weight:600}
 .r3{background:#7fb069;color:#1b1a19;border-radius:4px;padding:0 6px;font-size:12px;font-weight:600}
 table{border-collapse:collapse;width:100%;font-size:13px}td,th{border-bottom:1px solid var(--line);padding:4px 6px;text-align:left;vertical-align:top}
@@ -465,6 +502,21 @@ Names are versioned (<code>_v1</code>) and never reused once published, because 
         parts.append('<section class="card"><div class="hd"><b>%s</b><span class="r2">changed in round 2</span>'
                      '<code>%s.svg</code><span>defindex %s</span><span>%s</span></div>'
                      % (e(r["title"]), e(r["name"]), e(", ".join(map(str, r["defindex"]))), st))
+        if r.get("choice"):
+            parts.append('<p class="chg"><span class="ch">choice for the user</span> %s</p>' % e(r["choice"]))
+        if r.get("round5"):
+            badge = '<span class="r5">changed in round 5</span> ' if r.get("round5_changed", True) else ""
+            parts.append('<p class="chg">%s%s</p>' % (badge, e(r["round5"])))
+        if r.get("of_ref"):
+            parts.append('<div class="row">')
+            parts.append('<figure><img src="%s" alt="OF d_%s" loading="lazy"><figcaption>OF d_%s (reference)</figcaption></figure>'
+                         % (f["of"], e(r["of_ref"]), e(r["of_ref"])))
+            if "prev" in f:
+                parts.append('<figure><img src="%s" alt="live %s" loading="lazy"><figcaption>currently live: %s</figcaption></figure>'
+                             % (f["prev"], e(r["prev"]), e(r["prev"])))
+            parts.append('<figure><img src="%s" alt="proposed %s" loading="lazy"><figcaption>%s: %s</figcaption></figure>'
+                         % (f["normal"], e(r["name"]), "proposed" if (r.get("prev") or r.get("round5_new")) else "live (unchanged)", e(r["name"])))
+            parts.append('</div>')
         if r.get("round4"):
             parts.append('<p class="chg"><span class="r4">changed in round 4</span> %s</p>' % e(r["round4"]))
         if r.get("round3"):
@@ -493,7 +545,18 @@ Names are versioned (<code>_v1</code>) and never reused once published, because 
 
 # ---------------------------------------------------------------- cli
 
+def idle_priority():
+    """Run batch work at Windows Idle priority so live game servers on this box keep the CPU."""
+    try:
+        import ctypes
+        k = ctypes.windll.kernel32
+        k.SetPriorityClass(k.GetCurrentProcess(), 0x40)
+    except Exception:
+        pass
+
+
 def main():
+    idle_priority()
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["build", "review", "check"])
     ap.add_argument("keys", nargs="*")
@@ -532,9 +595,11 @@ def main():
                 continue
             warn = verdict(met, check_subset(svg))
             results[ent["name"]] = dict(name=ent["name"], title=ent["title"], defindex=ent["defindex"],
-                                        model=ent["model"], family=ent["family"], compare=ent.get("compare"),
+                                        model=ent.get("model") or ("OF sprite " + ent.get("of_icon", "")), family=ent["family"], compare=ent.get("compare"),
                                         round2=ent.get("round2_note"), round3=ent.get("round3_note"),
-                                        round4=ent.get("round4_note"),
+                                        round4=ent.get("round4_note"), round5=ent.get("round5_note"),
+                                        of_ref=ent.get("of_ref"), prev=ent.get("prev"), choice=ent.get("choice"),
+                                        round5_changed=ent.get("round5_changed", True), round5_new=ent.get("round5_new"),
                                         metrics=met, warnings=warn)
             print("%-44s %5.1fs w=%-5s parts=%-3s fill=%-5s gap=%-5s %s" % (
                 ent["name"], met["seconds"], met.get("vbw"), met.get("parts"), met.get("fill_ratio_bbox"),

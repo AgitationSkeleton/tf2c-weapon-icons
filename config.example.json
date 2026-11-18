@@ -2,8 +2,14 @@
   "tf2c_game_dir": "/path/to/TF2 Classified/tf2classified",
   "tf2_dir": "/path/to/Team Fortress 2",
   "tf2_client_dir": "",
-  "search_extra": [["dir", "/path/to/staged-mod/tf2classified"]],
+  "search_extra": [
+    [
+      "dir",
+      "/path/to/staged-mod/tf2classified"
+    ]
+  ],
   "staging_dir": "/path/to/staged-mod/tf2classified",
   "customslop_tools": "/path/to/tf2c-customslop/tools",
+  "of_dir": "/path/to/open_fortress",
   "out_dir": "out"
 }

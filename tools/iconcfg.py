@@ -12,6 +12,9 @@ Keys:
                     (searched first; the renderer resolves VMTs / VTFs against it)
   customslop_tools  bucket icons: the tools/ folder of a tf2c-customslop checkout
                     (https://github.com/AgitationSkeleton/tf2c-customslop), which holds the v2 renderer
+  of_dir            optional: an Open Fortress install's game folder (".../open_fortress"), read only:
+                    tools/killicons/ofref.py takes OF's own kill-feed sprites from it, and its models
+                    are searched last
   out_dir           where generated files go (default: ./out)
 """
 import glob
@@ -76,6 +79,8 @@ def search_order(first=()):
                   ("vpk", os.path.join(tf2, "hl2", "hl2_misc_dir.vpk"))]
     order.append(("dir", tf2c))
     order += [tuple(x) for x in opt("search_extra", []) or []]
+    if opt("of_dir"):
+        order.append(("dir", opt("of_dir")))
     # a numbered VPK archive (name_000.vpk) is read through its _dir.vpk, never on its own
     return [(k, p) for k, p in order
             if not (k == "vpk" and p[-8:-4].startswith("_") and p[-7:-4].isdigit())]

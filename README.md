@@ -1,21 +1,24 @@
 # TF2 Classified weapon icons
 
 Generated kill-feed icons and HUD bucket / armory icons for custom weapons on **TF2 Classified**
-(build 5205), plus the scripts that made them. Every icon here is made from the weapon's own 3D
-model. None of it is hand-traced or copied from another game's art.
+(build 5205), plus the scripts that made them. Most icons are made from the weapon's own 3D model.
+Five kill icons are instead vectorised from **Open Fortress's own kill-feed icons**, with credit:
+the Grenade Launcher (`_v2`) and the four newer Open Fortress weapons.
 
 These are the icons used by [tf2cc](https://github.com/AgitationSkeleton/tf2cc-tf2classified)
 (the Mercenary / Civilian custom classes for TF2 Classified) for its Open Fortress, MarxVee, old
-TF2 Classic beta and 4dm-map weapons. Every icon here was approved by the server owner; the kill icons went through
-four review rounds.
+TF2 Classic beta and 4dm-map weapons. Every icon here was approved by the server owner; the kill
+icons went through five review rounds. In the last round every Open Fortress-derived icon was
+checked against Open Fortress's own icon for that weapon.
 
-* **36 kill-feed icons:** SVG, in TF2 Classified's own death-notice format.
+* **40 kill-feed icons:** SVG, in TF2 Classified's own death-notice format. Five older versions
+  that were replaced are kept in [`icons/killicons/superseded/`](icons/killicons/superseded).
 * **10 bucket / armory icons:** PNG previews of the textures the server ships.
-* **Tools:** the kill-icon pipeline (model to SVG), the bucket-icon renderers, and a VTF-to-PNG
-  decoder.
+* **Tools:** the kill-icon pipeline (model to SVG), the Open Fortress sprite vectoriser, the
+  bucket-icon renderers, and a VTF-to-PNG decoder.
 
-The code is GPL-3.0. The icons depict other people's weapon models; see
-[Licence](#licence) and [CREDITS.md](CREDITS.md).
+The code is GPL-3.0. The icons depict other people's weapon models and, for five of them, trace
+Open Fortress's own kill-icon art; see [Licence](#licence) and [CREDITS.md](CREDITS.md).
 
 ## Showcase
 
@@ -29,9 +32,9 @@ the killer or the victim. Both looks come from the same SVG; the game tints it w
 | File | Weapon (tf2cc defindex) | Model source |
 |---|---|---|
 | `tf2cc_merc_crowbar_v1` | Crowbar (30100) | Open Fortress |
-| `tf2cc_merc_leadpipe_v1` | Lead Pipe (30101) | Open Fortress |
-| `tf2cc_merc_knife_v1` | Knife (30102) | Open Fortress |
-| `tf2cc_merc_chainsaw_v1` | Chainsaw (30104) | Open Fortress |
+| `tf2cc_merc_leadpipe_v2` | Lead Pipe (30101) | Open Fortress (posed like OF's icon) |
+| `tf2cc_merc_knife_v2` | Knife (30102) | Open Fortress (posed like OF's icon) |
+| `tf2cc_merc_chainsaw_v2` | Chainsaw (30104) | Open Fortress (posed like OF's icon) |
 | `tf2cc_merc_pistol_v1` | Pistol (30105) | Open Fortress |
 | `tf2cc_merc_akimbo_v1` | Akimbo Pistols (30106) | Open Fortress (pistol, drawn twice) |
 | `tf2cc_merc_revolver_v1` | Revolver (30107) | Open Fortress |
@@ -40,11 +43,15 @@ the killer or the victim. Both looks come from the same SVG; the game tints it w
 | `tf2cc_merc_supershotgun_v1` | Super Shotgun (30112) | Open Fortress |
 | `tf2cc_merc_assaultrifle_v1` | Assault Rifle (30113) | Open Fortress |
 | `tf2cc_merc_rocketlauncher_v1` | Rocket Launcher (30114) | Open Fortress |
-| `tf2cc_merc_chinalake_v1` | Grenade Launcher (30115) | Open Fortress |
+| `tf2cc_merc_chinalake_v2` | Grenade Launcher (30115) | Open Fortress: **vectorised from OF's own kill icon** |
 | `tf2cc_merc_gatling_v1` | Gatling Gun (30117) | Open Fortress |
 | `tf2cc_merc_railgun_v1` | Railgun (30118) | Open Fortress |
 | `tf2cc_merc_lightning_v1` | Lightning Gun (30119) | Open Fortress |
-| `tf2cc_merc_gib_v1` | BFG / Gib (30120) | Open Fortress |
+| `tf2cc_merc_gib_v2` | BFG / Gib (30120) | Open Fortress (burst coloured like OF's icon) |
+| `tf2cc_merc_quad_v1` | Quad Launcher (30121) | Open Fortress: **vectorised from OF's own kill icon** |
+| `tf2cc_merc_bouncer_v1` | Bouncer (30122) | Open Fortress: **vectorised from OF's own kill icon** |
+| `tf2cc_merc_eternalshotgun_v1` | Eternal Shotgun (30123) | Open Fortress: **vectorised from OF's own kill icon** |
+| `tf2cc_merc_sawballista_v1` | Saw Ballista (not yet assigned) | Open Fortress: **vectorised from OF's own kill icon** |
 | `tf2cc_merc_machinegun_v1` | Machine Gun (30150) | MarxVee pack |
 | `tf2cc_merc_medkit_v1` | Medkit (30151) | MarxVee pack |
 | `tf2cc_merc_crowbar_4rdm_v1` | Crowbar, old Merc (30202) | 4dm/4rdm map set |
@@ -67,6 +74,12 @@ the killer or the victim. Both looks come from the same SVG; the game tints it w
 
 Files: [`icons/killicons/svg/`](icons/killicons/svg) (the icons) and
 [`icons/killicons/png/`](icons/killicons/png) (`_normal` / `_local` previews at 3x).
+
+**Superseded icons.** Round 5 replaced five icons with `_v2` versions. The old files are kept in
+[`icons/killicons/superseded/`](icons/killicons/superseded), because servers that already sent them
+should keep them in their downloads (clients cache them, and a published name is never reused):
+`tf2cc_merc_leadpipe_v1`, `tf2cc_merc_knife_v1`, `tf2cc_merc_chainsaw_v1`, `tf2cc_merc_chinalake_v1`
+and `tf2cc_merc_gib_v1`.
 
 ### Bucket / armory icons
 
@@ -143,7 +156,54 @@ The pipeline (`tools/killicons/`) does the following for each icon:
 
 [`tools/killicons/manifest.json`](tools/killicons/manifest.json) lists each icon's model, family
 (gun / melee / thrown / flame / beam), the stock icon it was compared with, per-icon pose
-overrides, and the review notes from each round.
+overrides, and the review notes from each round. An entry with `of_icon` is vectorised from that
+Open Fortress sprite instead (see below), and `of_ref` names the Open Fortress icon it was checked
+against.
+
+## Icons vectorised from Open Fortress's own kill icons
+
+Open Fortress already has a kill-feed icon for nearly every weapon these icons cover. In round 5
+each Open Fortress-derived icon was compared with Open Fortress's icon for the same weapon:
+
+* **Already matching** (unchanged): Crowbar, Pistol, Akimbo, Revolver, Tommy Gun, Dynamite,
+  Super Shotgun, Assault Rifle, Rocket Launcher, Gatling Gun, Railgun, Lightning Gun. Open
+  Fortress's crowbar also has the hook top-right and concave-down.
+* **Re-posed from the model to Open Fortress's pose** (`_v2`): Lead Pipe and Knife (a flatter
+  ~12° angle), Chainsaw (motor and handle on the left, bar horizontal). The BFG / Gib keeps its
+  body and takes Open Fortress's red-orange burst.
+* **Vectorised from Open Fortress's icon**: the Grenade Launcher (`_v2`) and the Quad Launcher,
+  Bouncer, Eternal Shotgun and Saw Ballista (`_v1`). For these, a model render could not find a
+  usable side profile, or the result read worse than Open Fortress's icon.
+
+[`tools/killicons/ofref.py`](tools/killicons/ofref.py) does this from an Open Fortress install
+(config key `of_dir`). It only reads files:
+
+1. **Find the sprite.** Open Fortress's death notices are sprite rectangles in
+   `scripts/mod_textures.txt`. Each entry is `"<name>" { "dfile" "HUD/d_images_of"
+   "dnegfile" "HUD/dneg_images_of" "x" … "y" … "width" … "height" … }`. The `d_` sheet is the
+   normal look, and `dneg_` is the look used when the local player is involved. Most Mercenary
+   weapons are on `materials/hud/d_images_of.vtf`, a 512x1024 DXT5 texture with one mip, which
+   `dxt.py` decodes. Some kill credits go to a projectile's icon: the Bouncer uses
+   `tf_projectile_bouncyrocket`, the Saw Ballista uses `tf_projectile_sawblade`, and the Quad
+   uses `super_rocketlauncher`.
+2. **Split the sprite into layers.** The sprites are cream, about 32 px tall, with three parts:
+   * **Body:** solid ink (alpha above 0.75), plus anything dimmer within 1 px of it, which covers
+     the anti-aliased rim and the detail lines.
+   * **Detail lines:** dim pixels that have solid ink on two opposite sides. In Open Fortress
+     these 1-px lines are semi-transparent.
+   * **Effects:** the half-alpha muzzle or impact burst, which has no solid core. Saturated
+     pixels are a coloured effect, such as the BFG's red burst or the Lightning Gun's zap.
+3. **Rebuild in the TF2 Classified style.** The sprite's height maps to the 32-unit icon height,
+   and the width is capped at 130 units. Each layer is upscaled 16x and smoothed with a Gaussian,
+   so the sprite's pixel steps don't show. It is then thresholded and cleaned up. The detail
+   lines become ~1-unit **negative-space gap cuts**, which is the stock TF2 Classified look. The
+   burst becomes a `.cls{opacity:.5}` layer, and coloured effects become literal-colour layers.
+   The pipeline's own tracer then writes the SVG.
+
+Because the sources are about 32 px sprites, these icons have slightly softer edges than the
+model renders, and some detail lines come out dashed. The raw Open Fortress sprites are Open
+Fortress's art and are **not** included in this repository; `ofref.py` extracts them from your
+own install if you want to compare (`python -B tools/killicons/ofref.py OUTDIR name ...`).
 
 ## How the bucket icons are made
 
@@ -188,6 +248,7 @@ cp config.example.json config.json     # then edit the paths
 | `search_extra` | all (optional) | extra `["dir"/"vpk", path]` sources, e.g. a mod's asset tree |
 | `staging_dir` | bucket | loose tree with the models and materials to render |
 | `customslop_tools` | bucket | the `tools/` folder of a tf2c-customslop checkout |
+| `of_dir` | kill icons (OF-vectorised ones, `ofref.py`) | an Open Fortress install's `open_fortress` folder, read only |
 | `out_dir` | all | output folder (default `out/`) |
 
 The models in `manifest.json` and the bucket scripts use tf2cc's asset paths
@@ -199,6 +260,7 @@ at its asset tree. To make icons for other weapons, edit the manifest, `ICONS` o
 python -B tools/killicons/killicons.py build  [--config config.json] [name ...]
 python -B tools/killicons/killicons.py review [--stock path/to/stock/deathnotice]
 python -B tools/killicons/killicons.py check  some_icon.svg
+python -B tools/killicons/ofref.py OUTDIR crowbar ...      # extract OF's own d_/dneg_ sprites to compare
 
 # bucket icons
 python -B tools/bucket/render_old_icons.py  [name ...]   # old-sprite framing
@@ -221,7 +283,8 @@ and FastDL. Players see the icon after downloading it and restarting the game on
 
 * The kill icons are automatic silhouettes. Most needed per-icon pose overrides (flips, roll,
   cut limits) during review. Odd shapes, such as round or boxy items, can still read poorly at
-  1x. Two shipped icons sit just outside one stock range (BFG: 23 parts; Medkit: fill ratio
+  1x. The five icons vectorised from Open Fortress sprites have softer edges than the model
+  renders. Two shipped icons sit just outside one stock range (BFG: 23 parts; Medkit: fill ratio
   0.73), and both were accepted in review.
 * Kill icons only work on TF2 Classified (5205's SVG death notices). Players need one game
   restart after the first download.
@@ -242,4 +305,7 @@ at run time. `tools/srcmodel.py` is the same loader that ships in tf2c-customslo
 made by the teams and people in [CREDITS.md](CREDITS.md), who keep the rights to their designs.
 They are provided for use on TF2 Classified servers and in mods, with credit to those creators
 and to this repository. They are not covered by the GPL and must not be sold. TF2 Classified's
-own stock icons are not included here; they are only referred to by name.
+own stock icons are not included here; they are only referred to by name. Five kill icons (Grenade
+Launcher `_v2`, Quad Launcher, Bouncer, Eternal Shotgun, Saw Ballista) trace Open Fortress's own
+kill-icon art and are credited to the Open Fortress Team; Open Fortress's sprites themselves are not
+included.
