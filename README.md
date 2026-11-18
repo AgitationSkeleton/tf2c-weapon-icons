@@ -2,7 +2,8 @@
 
 Generated kill-feed icons and HUD bucket / armory icons for custom weapons on **TF2 Classified**
 (build 5205), plus the scripts that made them. Most icons are made from the weapon's own 3D model.
-Five kill icons are instead vectorised from **Open Fortress's own kill-feed icons**, with credit:
+Five kill icons are instead vectorised from **Open Fortress's own kill-feed icons** (drawn for
+Open Fortress by BobbusMcGee), with credit:
 the Grenade Launcher (`_v2`) and the four newer Open Fortress weapons.
 
 These are the icons used by [tf2cc](https://github.com/AgitationSkeleton/tf2cc-tf2classified)
